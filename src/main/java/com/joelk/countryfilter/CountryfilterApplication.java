@@ -1,5 +1,6 @@
 package com.joelk.countryfilter;
 
+import com.joelk.countryfilter.service.HttpClientService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,8 @@ public class CountryfilterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        
+        HttpClientService client = new HttpClientService();
+        String data = client.getRawData("https://restcountries.com/v3.1/all?fields=name,currencies");
+        System.out.println(data);
     }
 }
